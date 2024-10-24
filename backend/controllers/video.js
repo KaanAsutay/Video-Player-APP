@@ -8,15 +8,13 @@ exports.addVideo = async (req, res) => {
     const {title, description} = req.body;
     const videoPath = req.file.path;
 
-    console.log(req.file)
-    
     const video = new VideoSchema({
         title,
         description,
         filename: req.file.filename,
         videoUrl: videoPath
     })
-
+ 
     try {
         await video.save();
         res.status(200).json({
