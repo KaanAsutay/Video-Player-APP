@@ -6,6 +6,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const { dbConnection } = require('./db/dbConnect');
+const { readdirSync } = require('fs');
+const { route } = require('./routes/video');
 
 require('dotenv').config()
 /* ------------------------------------------------------- */
@@ -20,6 +22,13 @@ app.use(cors())
 
 // Accept JSON:
 app.use(express.json())
+
+/* ------------------------------------------------------- */
+// Routes:
+
+readdirSync('./routes')
+    .map((route) => 
+        app.use('/api', require('./routes/' + route)))
 
 /* ------------------------------------------------------- */
 // RUN SERVER:
