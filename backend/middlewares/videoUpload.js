@@ -2,10 +2,6 @@
 /* -------------------------------------------------------
     NODEJS EXPRESS | Video Player
 ------------------------------------------------------- */
-const router = require('express').Router()
+const multer = require('multer');
+const path = require('path');
 
-router.get('/', (req, res) => {
-    res.send('Hello world')
-})
-
-module.exports = router

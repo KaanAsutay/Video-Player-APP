@@ -7,7 +7,7 @@ const app = express();
 const cors = require('cors');
 const { dbConnection } = require('./db/dbConnect');
 const { readdirSync } = require('fs');
-const { route } = require('./routes/video');
+const { route } = require('./routes/video.js');
 
 require('dotenv').config()
 /* ------------------------------------------------------- */
