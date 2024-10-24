@@ -3,9 +3,8 @@
     NODEJS EXPRESS | Video Player
 ------------------------------------------------------- */
 const router = require('express').Router()
+const { videoUpload } = require('../middlewares/videoUpload')
 
-router.get('/', (req, res) => {
-    res.send('Hello world')
-})
+router.post('/upload', videoUpload.single('video'))
 
 module.exports = router
