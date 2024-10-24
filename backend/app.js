@@ -13,6 +13,17 @@ require('dotenv').config()
 
 const PORT = process.env.PORT || 8000
 
+/* ------------------------------------------------------- */
+// Middlewares:
+
+app.use(cors())
+
+// Accept JSON:
+app.use(express.json())
+
+/* ------------------------------------------------------- */
+// RUN SERVER:
+
 const server = () => {
     dbConnection()
     app.listen(PORT, () => {

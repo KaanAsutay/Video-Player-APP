@@ -1,3 +1,7 @@
+"use strict"
+/* -------------------------------------------------------
+    NODEJS EXPRESS | Video Player
+------------------------------------------------------- */
 const mongoose = require('mongoose')
 
 exports.dbConnection = async () => {
