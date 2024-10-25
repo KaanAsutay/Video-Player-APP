@@ -9,6 +9,9 @@ function VideoPlayer() {
 
     const {id} = useParams()
     const {videos} = useGlobalContext()
+    const video = videos.find((vid)=> {
+        return vid._id === id
+    })
 
      //refs
      const videoConRef = useRef(null); 
@@ -27,6 +30,36 @@ function VideoPlayer() {
          videojs.log('player will dispose');
          });
      };
+
+    // video Options
+    const videoOptions = {
+        autoplay: false,
+        controls: true,
+        responsive: true,
+        fluid: true,
+        alwaysShowControls: true,
+        sources: [{
+            src: video?.videoUrl,
+            type: 'video/mp4'
+        }],
+        controlBar: {
+            children: [
+                'playToggle',
+                'volumePanel',
+                'progressControl',
+                'currentTimeDisplay',
+                'timeDivider',
+                'durationDisplay',
+                'pictureInPictureToggle',
+                'qualitySelector',
+                'fullscreenToggle',
+            ],
+            durationDisplay: {
+                timeToShow: ['duration'],
+                countDown: false,
+            }
+        }
+    }
 
   return (
     <VideoPlayerStyled>
