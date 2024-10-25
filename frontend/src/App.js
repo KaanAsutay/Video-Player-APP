@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Videos from "./Components/Videos";
 import { useGlobalContext } from "./Context/global";
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
+import VideoPlayer from "./Components/VideoPlayer";
 
 function App() {
   const g = useGlobalContext()
@@ -13,7 +14,7 @@ function App() {
         <h1>Video Uploader</h1>
         <Routes>
           <Route path="/" element={<Videos />} />
-          <Route path="/videos/:id" element={<Videos />} />
+          <Route path="/videos/:id" element={<VideoPlayer />} />
         </Routes>
         <Videos />
       </AppStyled>
