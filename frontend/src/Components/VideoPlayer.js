@@ -1,10 +1,9 @@
 import React, { useRef } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { useGlobalContext } from '../context/global'
+import { useGlobalContext } from '../Context/global'
 import VideoJS from './VideoJS'
 import videojs from 'video.js';
-
 import 'videojs-contrib-quality-levels';
 
 

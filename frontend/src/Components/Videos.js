@@ -1,27 +1,26 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import { useGlobalContext } from '../Context/global';
-import { Link } from 'react-router-dom';
 
 function Videos() {
-
     const {videos} = useGlobalContext()
 
-  return (
-    <VideosStyled>
-      <div className='videos-container'>
-        {videos.map((video) => {
-    return <Link key={video._id} to={`/videos/${video._id}`}>
-                <div className='video'>
-                    <video src={video.videoUrl}></video>
-                    <h4>{video.title}</h4>
-                    <p>{video.description}</p>
-                </div>
-            </Link>
-        })}
-      </div>
-    </VideosStyled>
-  )
+    return (
+        <VideosStyled>
+            <div className="videos-container">
+                {videos.map((video) => {
+                    return <Link key={video._id} to={`/videos/${video._id}`}>
+                        <div  className="video">
+                            <video src={video.videoUrl}></video>
+                            <h4>{video.title}</h4>
+                            <p>{video.description}</p>
+                        </div>
+                    </Link>
+                })}
+            </div>
+        </VideosStyled>
+    )
 }
 
 const VideosStyled = styled.div`
@@ -43,33 +42,31 @@ const VideosStyled = styled.div`
                 transform: scale(1);
             }
         }
-        
         .video{
             transition: all .4s ease;
             width: 100%;
             cursor: pointer;
             border-radius: 15px;
-
             video{
                 width: 100%;
                 height: auto;
                 object-fit: cover;
                 border-radius: 15px;
             }
-
             h4{
                 color: #32ffce;
                 padding: .5rem 0;
                 font-size: 1.5rem;
                 font-weight: 500;
             }
-
             p{
                 color: #fff;
-
+                opacity: 0.8;
+                font-size: 1rem;
+                line-height: 1.4rem;
             }
         }
-}
+    }
 `;
 
 export default Videos
