@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Button from './Button';
 
 function Upload() {
     const [video, setVideo] = React.useState(null);
