@@ -16,7 +16,6 @@ function App() {
           <Route path="/" element={<Videos />} />
           <Route path="/videos/:id" element={<VideoPlayer />} />
         </Routes>
-        <Videos />
       </AppStyled>
     </BrowserRouter>
   );
