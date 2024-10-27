@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Button from './Button';
+import { useGlobalContext } from '../Context/global';
 
 function Upload() {
     const [video, setVideo] = React.useState(null);
@@ -8,6 +9,8 @@ function Upload() {
     const [description, setDescription] = React.useState('');
     const [label, setLabel] = React.useState('Upload your video...');
     const [loading, setLoading] = React.useState(false); 
+
+    const {getAllVideos} = useGlobalContext()
 
     const handleTextChange = name => e => {
         if(name === 'title') {
@@ -22,10 +25,38 @@ function Upload() {
         setLabel('Your Video: ' + e.target.files[0].name)
     }
 
+    const handleUpload = async (e) => {
+        e.preventDefault();
+        setLoading(true)
+
+        if(title){
+            const formData = new FormData();
+            formData.append('title', e.target.title.value)
+            formData.append('description', e.target.description.value)
+            formData.append('video', e.target.video.files[0]);
+
+            const res = await fetch('http://localhost:8000/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+
+            console.log(res)
+        }else{
+            alert('Add Title')
+        }
+        
+        setLoading(false)
+        getAllVideos()
+        setTitle('')
+        setDescription('')
+        setVideo(null)
+        setLabel('Upload your video...')
+    }
+
     return (
         <UploadStyled>
             <h2>Upload Video</h2>
-            <form  action="api/upload" method='POST' encType='multipart/form-data'>
+            <form onSubmit={handleUpload} action="api/upload" method='POST' encType='multipart/form-data'>
                 <div className="input-control">
                     <label htmlFor="title">Title</label>
                     <input 
