@@ -17,6 +17,11 @@ function Upload() {
         }
     }
 
+    const handleVideo = (e) => {
+        setVideo(e.target.files[0])
+        setLabel('Your Video: ' + e.target.files[0].name)
+    }
+
     return (
         <UploadStyled>
             <h2>Upload Video</h2>
