@@ -3,19 +3,23 @@ import Videos from "./Components/Videos";
 import { useGlobalContext } from "./Context/global";
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import VideoPlayer from "./Components/VideoPlayer";
+import { useState } from "react";
 
 function App() {
-  const g = useGlobalContext()
-  console.log(g)
+  const [modal, setModal] = useState(false)
 
   return (
     <BrowserRouter>
       <AppStyled className="App">
+        <div className="upload">
+          <button onClick={() => setModal(true)}>Upload</button>
+        </div>
         <h1>Video Uploader</h1>
         <Routes>
           <Route path="/" element={<Videos />} />
           <Route path="/videos/:id" element={<VideoPlayer />} />
         </Routes>
+        <div className="overlay" onClick={() => setModal(false)}></div>
       </AppStyled>
     </BrowserRouter>
   );
@@ -23,7 +27,6 @@ function App() {
 
 const AppStyled = styled.div`
   padding: 3rem 18rem;
-  
   h1{
     color: #fff;
     background: linear-gradient(to right, #00b894 40%,#705DF2 );
@@ -33,6 +36,19 @@ const AppStyled = styled.div`
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+  }
+  .upload{
+    display: flex;
+    justify-content: flex-start;
   }
 `;
 
