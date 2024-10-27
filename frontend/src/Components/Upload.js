@@ -16,43 +16,70 @@ function Upload() {
         }
     }
 
-  return (
-    <UploadStyled>
-      <h2>Upload Video</h2>
-      <form 
-      action='api/upload' 
-      method='POST' 
-      encType='multipart/form-data'
-      >
-        <div className="input-control">
-            <label htmlFor="title">Title</label>
-            <input 
-                type="text"
-                name="title" 
-                id="title" 
-                placeholder='Enter Title' 
-                value={title} 
-                onChange={handleTextChange('title')}
-            />
-        </div>
-        <div className="input-control">
-            <label htmlFor="description">Description</label>
-            <textarea 
-                name="description" 
-                placeholder='Enter description here...' 
-                id="description" cols="30" rows="6"
-                value={description}
-                onChange={handleTextChange('description')}
-                >
-            </textarea>
-        </div>
-        </form>
-    </UploadStyled>
-  )
+    return (
+        <UploadStyled>
+            <h2>Upload Video</h2>
+            <form onSubmit={handleUpload} action="api/upload" method='POST' encType='multipart/form-data'>
+                <div className="input-control">
+                    <label htmlFor="title">Title</label>
+                    <input 
+                        type="text"
+                        name="title" 
+                        id="title" 
+                        placeholder='Enter Title' 
+                        value={title} 
+                        onChange={handleTextChange('title')}
+                    />
+                </div>
+                <div className="input-control">
+                    <label htmlFor="description">Description</label>
+                    <textarea 
+                        name="description" 
+                        placeholder='Enter description here...' 
+                        id="description" cols="30" rows="6"
+                        value={description}
+                        onChange={handleTextChange('description')}
+                        >
+                    </textarea>
+                </div>
+                <div className="input-control upload-con">
+                    <label htmlFor="video">Video Upload</label>
+                    <div className="inner-input">
+                        <label 
+                            className='inner-label' 
+                            htmlFor="video"
+                            style={{color: video ? '#00b894' : 'rgb(74 74 74)'}}
+                            >
+                                {label}
+                        </label>
+                        <input 
+                            type="file" 
+                            name="video" 
+                            id="video"
+                            accept="video/*"
+                            //hidden
+                            hidden
+                            onChange={handleVideo}
+                        />
+                    </div>
+                    <div className="upload-btn">
+                        <Button     
+                            name="Upload"
+                            icon={<i className="fas fa-upload"></i>}
+                            bg={"#00b894"}
+                            type="submit"
+                            disabled={loading}
+                        />
+                    </div>
+                </div>
+            </form>
+        </UploadStyled>
+    )
 }
 
 const UploadStyled = styled.div`
-
+    position: fixed;
+    z-index: 5;
 `;
 
 export default Upload
