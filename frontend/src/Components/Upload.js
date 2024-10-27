@@ -1,21 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import Button from './Button';
 import { useGlobalContext } from '../Context/global';
-
+import Button from './Button';
+ 
 function Upload() {
     const [video, setVideo] = React.useState(null);
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [label, setLabel] = React.useState('Upload your video...');
-    const [loading, setLoading] = React.useState(false); 
+    const [loading, setLoading] = React.useState(false);
 
     const {getAllVideos} = useGlobalContext()
 
     const handleTextChange = name => e => {
-        if(name === 'title') {
+        if(name === 'title'){
             setTitle(e.target.value)
-        } else{
+        }else{
             setDescription(e.target.value)
         }
     }

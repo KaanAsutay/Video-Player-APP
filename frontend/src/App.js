@@ -5,24 +5,30 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom';
 import VideoPlayer from "./Components/VideoPlayer";
 import { useState } from "react";
 import Upload from "./Components/Upload";
+import Button from "./Components/Button";
 
 function App() {
   const [modal, setModal] = useState(false)
-
+ 
   return (
     <BrowserRouter>
       <AppStyled className="App">
         <div className="upload">
-          <button onClick={() => setModal(true)}>Upload</button>
+          <Button 
+            name="Upload"
+            icon={<i className="fas fa-plus"></i>}
+            onClick={() => {setModal(true);}}
+            bg="#1e90ff"
+          />
         </div>
         {modal && <Upload />}
         <h1>Video Uploader</h1>
         <Routes>
-          <Route path="/" element={<Videos />} />
-          <Route path="/videos/:id" element={<VideoPlayer />} />
+          <Route path='/' element={<Videos />} />
+          <Route path='/videos/:id' element={<VideoPlayer />} />
         </Routes>
         {modal && <div className="overlay" onClick={() => setModal(false)}></div>}
-      </AppStyled>
+      </AppStyled >
     </BrowserRouter>
   );
 }

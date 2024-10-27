@@ -5,7 +5,7 @@ import { useGlobalContext } from '../Context/global';
 
 function Videos() {
     const {videos} = useGlobalContext()
-
+ 
     return (
         <VideosStyled>
             <div className="videos-container">

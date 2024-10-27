@@ -2,19 +2,15 @@ import React from 'react'
 import styled from 'styled-components';
 
 function Button({name, onClick, icon, bg, type, disabled}) {
-  return (
-    <ButtonStyled 
-    style={{background: bg}} 
-    onClick={onClick} 
-    type={type} 
-    disabled={disabled}
-    >
-        {icon}
-        {name}
-    </ButtonStyled>
-  )
+    return (
+        <ButtonStyled style={{
+            background: bg
+        }} onClick={onClick} type={type} disabled={disabled}>
+            {icon}
+            {name}
+        </ButtonStyled>
+    )
 }
-
 const ButtonStyled = styled.button`
     display: flex;
     align-items: center;
@@ -29,5 +25,4 @@ const ButtonStyled = styled.button`
         color: rgba(255,255,255, 1);
     }
 `;
-
 export default Button

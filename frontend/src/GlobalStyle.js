@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
     }
-
+ 
     body{
         font-size: 1.2rem;
         -webkit-font-smoothing: antialiased;

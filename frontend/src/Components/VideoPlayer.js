@@ -4,9 +4,10 @@ import styled from 'styled-components'
 import { useGlobalContext } from '../Context/global'
 import VideoJS from './VideoJS'
 import videojs from 'video.js';
+
 import 'videojs-contrib-quality-levels';
 
-
+ 
 function VideoPlayer() {
 
     const {id} = useParams()
