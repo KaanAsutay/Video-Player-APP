@@ -5,7 +5,7 @@ const GlobalContext = React.createContext()
 //actions
 const LOADING = 'LOADING'
 const SET_VIDEOS = 'SET_VIDEOS'
-const SET_SELECTED_VIDEO = 'SET_SELECTED_VIDEO'
+// const SET_SELECTED_VIDEO = 'SET_SELECTED_VIDEO'
 
 const reducer = (state, action) => {
     switch(action.type){
@@ -28,7 +28,7 @@ const reducer = (state, action) => {
             return state
     }
 
-    return state
+    // return state
 }
 
 export const GlobalProvider = ({children}) => {
